@@ -1,0 +1,409 @@
+html, body {
+
+    width: 100%;
+
+    background-color: white;
+
+}
+/* --------- HEADER SECTION ------------*/
+
+header {
+    background: url(https://i.pinimg.com/originals/1b/96/2d/1b962da7b88cb8b00bc69821c3c48311.jpg);
+    background-size: cover;
+    position: fixed-top;
+    padding: 50px 10px 60px 10px;
+    margin: 0px;
+}
+header h1{
+    text-align: center;
+    font-size: 80px;
+    font-family: 'Girassol', cursive;
+}
+header h2{
+    text-align: center;
+    font-size: 60px;
+    font-family: 'Girassol', cursive;
+}
+.navbar, .navbar-inverse {
+	border-radius: 0;
+	border: none;
+	margin-bottom: 0;
+	min-height: 60px;
+}
+.nav li {
+	display: inline;
+	color: white;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: blue;
+    font-weight: bold;
+	font-family: Lato;
+	font-size: 1.7em;
+	padding: 20px 25px 20px 25px;
+}
+.navbar-inverse .navbar-nav > li > img {
+	padding: 5px 5px 5px 5px;
+	margin-right: 500px;
+}
+.navbar-inverse .navbar-nav li a:hover {
+	background-color: #444444;
+	transition: 0.7s all linear;
+	height: 100%;
+}
+.navdir a:hover{
+    color: red;
+}
+/* ------------ MAIN CONTENT ----------- */
+h3 {
+    font-family: 'Baskervville', serif;
+    margin-left: 100px;
+}
+#pres {
+    font-family: 'Vollkorn', serif;
+    text-align: center;
+    font-weight: bold;
+    font-size: 35px;
+    padding: 15px 150px 20px 150px;
+}
+.Team h1 {
+
+    color: green;
+
+    font-size: 50px;
+
+    margin-top: 60px;
+
+    margin-bottom: 50px;
+
+    text-align: center;
+
+    font-family: 'Lilita One', cursive;
+
+}
+
+.gridteam{
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+
+    margin-bottom: 80px;
+
+    text-align: center;
+
+}
+
+form {
+
+    border: 2px groove;
+
+    margin: 10px 250px 50px 250px;
+
+    padding: 15px;
+
+    background-color: lightblue;
+
+    width: 550px;
+
+}
+
+.logf{
+
+    margin: 10px 450px 50px 450px;
+
+}
+
+form ul li {
+
+    list-style: none;
+
+}
+
+/* ----------- FOOTER SECTION ------------*/
+
+.footer {
+
+    text-align: center;
+
+    background-color: black;
+
+    height: 50px;
+
+    color: white;
+
+    margin-top: 10px;
+
+    width:100%;
+
+    bottom: 0;
+
+}
+
+.footer p{
+
+    text-align: center;
+
+}
+
+.regfooter{
+
+    bottom: 0;
+
+}
+
+/* ---------- PROFIL PAGE ------------*/
+
+thead th {
+
+    color:blue;
+
+}
+
+th {
+
+    color:green;
+
+}
+
+tfoot th, td {
+
+    color:red;
+
+}
+
+​
+
+table {
+
+    margin: 0 auto;
+
+}
+
+table, th, td {
+
+    border: 4px solid black;
+
+}
+
+​
+
+​
+
+/** {
+
+    box-sizing: border-box;
+
+}
+
+​
+
+*:before,
+
+*:after {
+
+    box-sizing: border-box;
+
+}
+
+​
+
+html,
+
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    height: 100%;
+
+    position: relative;
+
+    margin:0px;
+
+}
+
+​
+
+header {
+
+    text-align: center;
+
+}
+
+​
+
+li {
+
+    display: inline;
+
+    padding: 5px;
+
+}
+
+​
+
+a {
+
+    text-decoration: none;
+
+    color: blue;
+
+}
+
+​
+
+a:hover { color : red;}
+
+​
+
+hr {
+
+    width: 100%;
+
+    height:4px;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+    background-color: darkblue;
+
+    border: 0 none;
+
+}
+
+​
+
+input[type=text], input[type=password] {
+
+    width: 50%;
+
+    padding: 7px;
+
+    /*margin: 5px 0 22px 0;*/
+
+/*    display: inline-block;
+
+    border: none;
+
+    background: #f1f1f1;
+
+}
+
+​
+
+input[type=text]:focus, input[type=password]:focus {
+
+    background-color: #ddd;
+
+    outline: none;
+
+}
+
+​
+
+.top-container {
+
+    background: #ccc;
+
+    padding:5px;
+
+    border-bottom:2px solid #0f0f0f;
+
+}
+
+.bottom-container {
+
+    background: #333;
+
+    padding:5px;
+
+    border-top:2px solid #0f0f0f;*/
+
+    /*position:absolute;*/
+
+/*    bottom:0;
+
+}
+
+​
+
+.container-term {
+
+    width:80%;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+    text-align: left;
+
+}
+
+footer {
+
+    text-align: center;
+
+    height: 50px;
+
+    color: white;
+
+    padding: 5px;
+
+    margin-top: 10px;
+
+    bottom: 0px;
+
+}
+
+​
+
+.btn-submit {
+
+    background-color: cornflowerblue;
+
+    color: white;
+
+    padding: 16px 20px;
+
+    margin: 8px 0;
+
+    border: none;
+
+    cursor: pointer;
+
+    width: 100%;
+
+    opacity: 0.9;
+
+}
+
+.btn-submit:hover {
+
+    opacity: 1;
+
+}
+
+​
+
+.error-message {
+
+    color : red;
+
+}
+
+​
+
+.user {
+
+    float: right;
+
+    position: absolute;
+
+    font-size: 25px;
+
+    right:10em;
+
+    top: 2em;
+
+}*/
+

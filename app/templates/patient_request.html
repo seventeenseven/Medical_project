@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>MAD</title>
+
+  <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static', filename='simple-sidebar.css')}}" rel="stylesheet">
+
+  <style>
+        .trash { color:rgb(209, 91, 71); }
+        .flag { color:rgb(248, 148, 6); }
+        .panel-body { padding:0px; }
+        .panel-footer .pagination { margin: 0; }
+        .panel .glyphicon,.list-group-item .glyphicon { margin-right:5px; }
+        .panel-body .radio, .checkbox { display:inline-block;margin:0px; }
+        .panel-body input[type=checkbox]:checked + label { text-decoration: line-through;color: rgb(128, 144, 160); }
+        .list-group-item:hover, a.list-group-item:focus {text-decoration: none;background-color: rgb(245, 245, 245);}
+        .list-group { margin-bottom:0px; }
+
+        .reqnans {
+            position: relative;
+            left: 80%;
+        }
+        .reqans {
+            position: relative;
+            left: 70%;
+        }
+        #title2 {
+
+        }
+    </style>
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Profile Page </div>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light">About MAD</a>
+        <a href="/profil/{{ user.user_id }}" class="list-group-item list-group-item-action bg-light">Patient Profile</a>
+        <a href="/profil/{{ user.user_id }}/request" class="list-group-item list-group-item-action bg-light">Patient Requests</a>
+        <a href="/profil/{{ user.user_id }}/modif" class="list-group-item list-group-item-action bg-light">Modify Profile</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Hide Nav</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="/profil/{{ user.user_id }}">{{ user.first_name }}'s Profile <span class="sr-only">(current)</span></a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+     <div>
+        <h2 id="title2">Here's your Sickness request <br> Along with the Answer from the doctor</h2><br>
+         {% for p in p_request%}
+            <div style="border: 1px solid black; padding:3px">
+                <small>
+                    Your Request made on the: {{ p.pub_date }}
+                </small>
+                <p>{{ p.content }} </p>
+                {% if p.answer %}
+                <p><b>The answer:</b> {{ p.answer }}</p>
+                <small>Answered by Doctor {{ p.doctor.name }}</small>
+                <button class="btn btn-success reqans">Request answered</button>
+                {% else %}
+                <button class="btn btn-danger reqnans">Request not answered yet</button>
+                {% endif %}
+
+            </div>
+         {% endfor %}
+     </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+    <!------------------------- FOOTER ------------------------>
+
+	<div class="footer" style="background-color: black; color:white; bottom:0; display: flex; width:100%">
+
+	        <p style="vertical-align: middle; display: table-cell;">Copyright &copy;2019-2020. <b>©AJFB Development</b>. All rights reserved©</p>
+
+	</div>
+</body>
+
+</html>

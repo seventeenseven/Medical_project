@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Login-Reg/.idea/Login-Reg.iml" filepath="$PROJECT_DIR$/../Login-Reg/.idea/Login-Reg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Medicality.iml" filepath="$PROJECT_DIR$/.idea/Medicality.iml" />
+      <module fileurl="file://$USER_HOME$/Projects/stock_website/responsible_cv/.idea/responsible_cv.iml" filepath="$USER_HOME$/Projects/stock_website/responsible_cv/.idea/responsible_cv.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>MAD</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+	<link href="{{url_for('static', filename='main.css')}}" rel="stylesheet">
+	<link href="{{url_for('static', filename='util.css')}}" rel="stylesheet">
+
+	<!-- icon -->
+	<link href="{{url_for('static', filename='MAD-bg.jpg')}}" type="image/png" rel="icon">
+<!--===============================================================================================-->
+</head>
+<body>
+
+	<div class="limiter">
+
+		{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+			<ul class=flashes>
+				{% for category, message in messages %}
+				<li class="{{ category }}">{{ message }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+		{% endwith %}
+		<div class="container-login100" style="background-image: url('{{url_for('static', filename='MAD-bg.jpg')}}');">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" method="POST">
+					{{ form.hidden_tag() }}
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+						Log in
+					</span>
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						{{ form.email.label() }}
+						{{ form.email(class="input-100") }}
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						{{ form.password.label }}
+						{{ form.password(class="input-100", placeholder="Password") }}
+						<span class="focus-input100" ></span>
+					</div>
+
+					<div class="wrap-input100">
+						{{ form.role.label() }}
+						{{ form.role() }}
+						<span class="focus-input100" ></span>
+					</div>
+
+					<div class="contact100-form-checkbox">
+						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+						<label class="label-checkbox100" for="ckb1">
+							Remember me
+						</label>
+					</div>
+
+						{{ form.submit(class="login100-form-btn") }}
+
+					<div class="text-center p-t-90">
+						<a href="/register">
+							<button>Register here</button>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<!-- Bootstrap core JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Custom scripts for this template -->
+  	<script src="{{url_for('static', filename='main.js')}}"></script>
+
+	<!------------------------- FOOTER ------------------------>
+	<div class="footer" style="background-color: black; color:white; bottom:0; display: flex; width:100%">
+	        <p style="vertical-align: middle; display: table-cell;">Copyright &copy;2019-2020. <b>©AJFB Development</b>. All rights reserved©</p>
+	</div>
+
+</body>
+</html>

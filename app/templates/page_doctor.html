@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+    		<link rel="shortcut icon" href="https://zupimages.net/up/19/50/f9c2.png">
+  <meta name="author" content="">
+
+  <title>MAD</title>
+
+  <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static', filename='simple-sidebar.css')}}" rel="stylesheet">
+
+  <style>
+        .trash { color:rgb(209, 91, 71); }
+        .flag { color:rgb(248, 148, 6); }
+        .panel-body { padding:0px; }
+        .panel-footer .pagination { margin: 0; }
+        .panel .glyphicon,.list-group-item .glyphicon { margin-right:5px; }
+        .panel-body .radio, .checkbox { display:inline-block;margin:0px; }
+        .panel-body input[type=checkbox]:checked + label { text-decoration: line-through;color: rgb(128, 144, 160); }
+        .list-group-item:hover, a.list-group-item:focus {text-decoration: none;background-color: rgb(245, 245, 245);}
+        .list-group { margin-bottom:0px; }
+    </style>
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Hello Doctor {{ doctor.name }} </div>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light">About MAD</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Doctor categories</a>
+        <a href="/doctor/{{ doctor.category }}/{{ doctor.doc_id }}" class="list-group-item list-group-item-action bg-light">Doctor Profile</a>
+        <a href="/doctor/{{ doctor.category }}/{{ doctor.doc_id }}/answered" class="list-group-item list-group-item-action bg-light">All the requests</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Status <i style="border: 1px solid orange; background-color:lightblue; padding:3px ">{{ counter }}</i></a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Hide Nav</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+
+            <li class="nav-item">
+              <a class="nav-link" href=""><img src="{{ doctor.image_profile }}" width="30px" height="30px"></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+         <div class="row">
+           <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-list"></span><p style="font-weight:bold">List of Illness requests for the category: {{ category }}</p>
+                </div>
+                <div class="panel-body">
+                    <h3>Check the request you want to answer and give the diagnosis in the input</h3><br><br><br>
+                    <ul class="list-group">
+                        {% for sickness in requests %}
+                            {% if not sickness.answer %}
+                                <li class="list-group-item" style="margin:2px">
+                                    <small style="background-color:red">The request below needs an answer</small>
+                            <div class="checkbox">
+                                <input type="checkbox" id="checkbox" value="{{ sickness.ill_id }}"/>
+                                <label for="checkbox">
+                                    The Patient is {{ sickness.user.first_name }}:
+                                    "{{ sickness.content }}"
+                                    <small>Made on the {{ sickness.pub_date }}</small>
+                                </label>
+                                <a href="/profil/{{ sickness.user_id }}"><button class="btn btn-info"> Check the profile of the patient there </button></a>
+                                {% if sickness.image_file %}
+                                    <br><br><button class="btn btn-primary" onclick="toggle_div()">Show the uploaded file </button>
+                                    <small>To Hide the file click on the button again.</small>
+                                    <div id="{{ sickness.ill_id }}" style="display:none">
+                                        <img src="{{ url_for('static', filename=sickness.image_file) }}" width="200" height="200">
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="pull-right action-buttons">
+                                <a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-pencil"></span></a>
+                                <a href="http://www.jquery2dotnet.com" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
+                                <a href="http://www.jquery2dotnet.com" class="flag"><span class="glyphicon glyphicon-flag"></span></a>
+                            </div> <br>
+                            <form method="POST" action=" {{url_for('answer', category=category, d_id=d_id , id=sickness.ill_id) }}" style="display: flex; flex-direction:column; border: 1px solid black" >
+                                {{ form.hidden_tag() }}
+                                {{ form.answer.label() }}
+                                {{ form.answer() }}
+                                {{ form.submit() }}
+                            </form>
+                        </li><br><br>
+                            {% else %}
+                                <p style="color:orange">The remaining requests has been answered, Thank you</p>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div><br><br><br>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-6" style="bottom:0">
+                            <h6>
+                                Total of the requests made for your category: <span class="label label-info">{{ counter }}</span></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         </div>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+    {% for sickness in requests %}
+    function toggle_div() {
+      var x = document.getElementById("{{ sickness.ill_id }}");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    {% endfor %}
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,370 @@
+	<!DOCTYPE html>
+	<html lang="zxx" class="no-js">
+	<head>
+		<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+		<link rel="shortcut icon" href="https://zupimages.net/up/19/50/f9c2.png">
+		<!-- Author Meta -->
+		<meta name="author" content="Colorlib">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+		<!-- Site Title -->
+		<title> MAD </title>
+
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+			<!--
+			CSS
+			============================================= -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/linearicons.css') }}"/>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}"/>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}"/>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/nice-select.css') }}"/>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}"/>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		</head>
+		<body>
+
+			<!-- Start Header Area -->
+			<header class="default-header">
+				<div class="container">
+					<div class="header-wrap">
+						<div class="header-top d-flex justify-content-between align-items-center">
+							<div class="logo">
+								<a href="#home"><img src="https://zupimages.net/up/19/50/f9c2.png" alt="" width="40" height="40"></a>
+							</div>
+							<div class="main-menubar d-flex align-items-center">
+								<nav class="">
+									<a href="/home">Home</a>
+									<a href="/">Login</a>
+									<a href="/register">Register</a>
+									<a href="/profil/{{ userId }}">Your Profile page</a>
+									<a href="#services">Services</a>
+									<a href="#doctor">Our Doctors</a>
+									<a href="/logout">Logout</a>
+								</nav>
+								<div class="menu-bar"><span class="lnr lnr-menu"></span></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- End Header Area -->
+
+			<!-- start banner Area -->
+			<section class="banner-area relative" id="home">
+				<div class="container container-image">
+
+						<div class="row fullscreen align-items-center justify-content-center">
+							<div class="banner-content col-lg-6 col-md-12">
+
+				{% with messages = get_flashed_messages(with_categories=true) %}
+								{% if messages %}
+								<ul class="flashes">
+									{% for category, message in messages %}
+									<li class="alert alert-{{ category }}">{{ message }}</li>
+									{% endfor %}
+								</ul>
+								{% endif %}
+							{% endwith %}
+								<h1 class="text-uppercase">
+									MEDICAL ADVICES & DIAGNOSIS
+								</h1>
+								<p>
+									Get in touch with our professionals, experienced doctors, feel the form to describe your pathology and a professional will answer you quickly !
+								</p>
+								<button class="primary-btn2 mt-20 text-uppercase ">Get Started<span class="lnr lnr-arrow-down"></span></button>
+							</div>
+							<div class="col-lg-6 d-flex align-self-end img-right">
+								<img class="img-fluid" src="{{ url_for('static', filename='header-img.png') }}" alt="">
+							</div>
+						</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+
+			<!-- Start feature Area -->
+			<section class="feature-area section-gap" id="service">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6" id="services">
+							<div class="single-feature d-flex flex-row pb-30">
+								<div class="icon">
+									<span class="lnr lnr-rocket"></span>
+								</div>
+								<div class="desc">
+									<h4 class="text-uppercase">24/7 Avalaible doctors</h4>
+									<p>
+										Our doctors will be ready to give you answer that will help really improve your health.
+									</p>
+								</div>
+							</div>
+							<div class="single-feature d-flex flex-row pb-30">
+								<div class="icon">
+									<span class="lnr lnr-chart-bars"></span>
+								</div>
+								<div class="desc">
+									<h4 class="text-uppercase">Medical actuality</h4>
+									<p>
+										Be aware of the medical innovations and relative informations.
+									</p>
+								</div>
+							</div>
+							<div class="single-feature d-flex flex-row">
+								<div class="icon">
+									<span class="lnr lnr-bug"></span>
+								</div>
+								<div class="desc">
+									<h4 class="text-uppercase">Intensive Care</h4>
+									<p>
+										Your health is our first care
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="single-feature d-flex flex-row pb-30">
+								<div class="icon">
+									<span class="lnr lnr-heart-pulse"></span>
+								</div>
+								<div class="desc">
+									<h4 class="text-uppercase">24/7 emergency</h4>
+									<p>
+										You don't feel good ? Don't worry we're here for you
+									</p>
+								</div>
+							</div>
+							<div class="single-feature d-flex flex-row pb-30">
+								<div class="icon">
+									<span class="lnr lnr-paw"></span>
+								</div>
+								<div class="desc">
+									<h4 class="text-uppercase">Veterinarian services</h4>
+									<p>
+										Feel free to ask question about your dog's health
+									</p>
+								</div>
+							</div>
+							<div class="single-feature d-flex flex-row">
+								<div class="icon">
+									<span class="lnr lnr-users"></span>
+								</div>
+								<div class="desc">
+									<h4 class="text-uppercase">Intensive Care</h4>
+									<p>
+										Your health is our first care
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End feature Area -->
+
+
+			<!-- Start about Area -->
+			<section class="about-area" id="appoinment">
+				<div class="container-fluid">
+					<div class="row d-flex justify-content-end align-items-center">
+						<div class="col-lg-6 col-md-12 about-left no-padding">
+							<img class="img-fluid" src="{{ url_for('static', filename='about-img.jpg') }}" alt="">
+						</div>
+						<div class="col-lg-6 col-md-12 about-right no-padding">
+							<h1>Describe how you feel by <br> Filling this form</h1>
+					​
+							<form class="booking-form" method="post" enctype="multipart/form-data">
+								{{ form.hidden_tag() }}
+								 	<div class="row">
+								 		<div class="col-lg-12 d-flex flex-column">
+							 				{{ form.category.label() }}
+											{{ form.category(class="form-control mt-20") }}<br>
+								 		</div>
+							 			<div class="col-lg-12 d-flex flex-column">
+											{{ form.content.label() }}
+											{{ form.content(class="form-control mt-20") }}<br>
+										</div>
+										<div class="col-lg-12 flex-column">
+											{{ form.document.label() }}
+											{{ form.document() }}
+										</div>
+
+										<div class="col-lg-12 d-flex justify-content-end send-btn">
+											{{ form.submit(class="submit-btn primary-btn mt-20 text-uppercase ") }}
+										</div>
+
+										<div class="alert-msg"></div>
+									</div>
+					  		</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End about Area -->
+
+			<!-- Start consultans Area -->
+			<section class="consultans-area section-gap" id="consultant">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="col-md-8 pb-80 header-text">
+							<h1>Our Doctors</h1>
+							<p>
+								Take a look to our professionals.
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						{% for doctor in doctors %}
+						<div class="col-lg-3 col-md-3 vol-wrap" id="doctor">
+							<div class="single-con">
+								<div class="content">
+								    <a href="#" target="_blank">
+								      <div class="content-overlay" style="width:500px;height;500px"></div>
+								  		 <img class="content-image img-fluid d-block mx-auto" src="{{ doctor.image_profile }}" alt="">
+								      	<div class="content-details fadeIn-bottom">
+								      		<h4>{{ doctor.name }}</h4>
+								      		<p>
+								      			{{ doctor.category}}
+								      		</p>
+								      	</div>
+								    </a>
+								 </div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</section>
+			<!-- End consultans Area -->
+
+			<!-- Start blog Area -->
+			<section class="blog-area section-gap">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-md-8 pb-30 header-text">
+							<h1>Medical actualities</h1>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> labore  et dolore magna aliqua.
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="single-blog col-lg-4 col-md-4">
+
+							<img class="f-img img-fluid mx-auto" src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
+							<h4>
+								<a href="#">Neurons connectivity</a>
+							</h4>
+							<p>
+								Neurons communicate with each another via synapses, where either the axon terminal of one cell contacts another neuron's dendrite, soma or, less commonly, axon. Neurons such as Purkinje cells in the cerebellum can have over 1000 dendritic branches, making connections with tens of thousands of other cells; other neurons, such as the magnocellular neurons of the supraoptic nucleus, have only one or two dendrites, each of which receives thousands of synapses.
+							</p>
+						</div>
+						<div class="single-blog col-lg-4 col-md-4">
+							<img class="f-img img-fluid mx-auto" src="{{ url_for('static', filename='b2.jpg') }}" alt="">
+							<h4>
+								<a href="#">Emergency contraception</a>
+							</h4>
+							<p>
+								Emergency contraception (EC) are birth control measures that may be used after sexual intercourse to prevent pregnancy. Emergency contraception has not been shown to affect the rates of abortion within a country.
+There are different forms of EC. Emergency contraceptive pills (ECPs)—sometimes simply referred to as emergency contraceptives (ECs) or the morning-after pill—are medications intended to disrupt or delay ovulation or fertilization, which are necessary for pregnancy.[3][4][5] ECPs and abortion pills are not the same. ECPs work by preventing or delaying ovulation and therefore preventing pregnancy, not by abortion.[6]
+							</p>
+						</div>
+						<div class="single-blog col-lg-4 col-md-4">
+							<img class="f-img img-fluid mx-auto" src="{{ url_for('static', filename='b3.jpg') }}" alt="">
+							<h4>
+								<a href="#">Tension Meter</a>
+							</h4>
+							<p>
+								A tension meter is a device used to measure tension in wires, cables, textiles, belts and more. Meters commonly use a 3 roller system where the material travels through the rollers causing deflection in the center roller that is connected to an analog indicator or load cell on digital models. Single roll tension sensors and sonic tension meters are other types of tension meters. Tension may also be inferred from the frequency of vibration of the material under stress by solving the "Vibrating String Equation".
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- end blog Area -->
+
+<!--			&lt;!&ndash; Start fact Area &ndash;&gt;-->
+<!--			<section class="facts-area pt-100 pb-100">-->
+<!--				<div class="container">-->
+<!--					<h2>Our Team</h2>-->
+<!--					<div class="row">-->
+<!--						<div class="single-blog col-lg-4 col-md-4">-->
+<!--							<img src="https://zupimages.net/up/19/50/w5jb.png" width="150" height="150"><br><label style="font-size: 14px; color: white; background-color: orange;">Franck Kugler</label><br><label style="font-size: 14px;">Naturopath</label>-->
+<!--						</div>-->
+<!--						<div class="single-blog col-lg-4 col-md-4">-->
+<!--							<img src="https://zupimages.net/up/19/50/iuek.png" width="150" height="150"><br><label style="font-size: 14px; color: white; background-color: orange;">DR Frédéric Halter</label><br><label style="font-size: 14px;">orthopaedist-osteopath</label>-->
+<!--						</div>-->
+<!--						<div class="single-blog col-lg-4 col-md-4">-->
+<!--							<img src="https://res.cloudinary.com/doctolib/image/upload/q_auto:eco,f_auto,w_1024,h_700,c_limit/yamvdhsr7ib9dn98fl0r.jpg" width="150" height="150"><br><label style="font-size: 14px; color: white; background-color: orange;">DR Lucia Ciortea</label><br><label style="font-size: 14px;">general practitioner</label>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</section>-->
+<!--			&lt;!&ndash; end fact Area &ndash;&gt;-->
+
+			<!-- start footer Area -->
+			<footer class="footer-area section-gap" style="height:">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6  col-md-12">
+							<div class="single-footer-widget newsletter">
+								<h6>Special Request</h6>
+								<p>Send an email to the general doctor in charge.</p>
+								<small>Maybe you want to fix an appointment with the doctor</small>
+								<div id="mc_embed_signup">
+									<form action="mailto:ajane717@gmail.com" method="get" class="form-inline">
+
+										<div class="form-group row" style="width: 100%">
+											<div class="col-lg-8 col-md-12">
+												<input name="message" placeholder="Enter your request" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your message '" required="" type="text">
+												<div style="position: absolute; left: -5000px;">
+													<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+												</div>
+											</div>
+
+											<div class="col-lg-4 col-md-12">
+												<button class="nw-btn primary-btn">Send<span class="lnr lnr-arrow-right"></span></button>
+											</div>
+										</div>
+										<div class="info"></div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row footer-bottom d-flex justify-content-between">
+						<p class="col-lg-8 col-sm-12 footer-text m-0">
+							<p>Copyright &copy;2019-2020. <b>©AJFB Development</b>. All rights reserved©</p>
+						</p>
+						<div class="col-lg-4 col-sm-12 footer-social">
+							<a href="#"><i class="fa fa-facebook"></i></a>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+							<a href="#"><i class="fa fa-dribbble"></i></a>
+							<a href="#"><i class="fa fa-behance"></i></a>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- End footer Area -->
+
+			<script src="{{ url_for('static', filename='js/vendor/jquery-2.2.4.min.js') }}"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+			<script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/jquery.ajaxchimp.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/jquery.nice-select.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/parallax.min.js') }}"></script>
+			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+			<script src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/waypoints.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/jquery.counterup.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+		</body>
+	</html>

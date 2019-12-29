@@ -1,0 +1,227 @@
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+		<link rel="shortcut icon" href="https://zupimages.net/up/19/50/f9c2.png">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Lilita+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Girassol&display=swap" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css?family=Baskervville&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main_log.css') }}"/>
+
+    <title>MAD</title>
+
+</head>
+
+<body>
+
+    <!--------------------------- HEADER SECTION -------------------------------->
+
+			                <!-- NAVBAR BOOTSTRAP -->
+
+		<nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="background-color: #F8F8F8;">
+
+			<div class="container">
+
+				<div class="navbar-header">
+
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+
+								<span class="sr-only">Toggle navigation</span>
+
+								<span class="icon-bar"></span>
+
+								<span class="icon-bar"></span>
+
+								<span class="icon-bar"></span>
+
+							</button>
+
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+					 <ul class="nav navbar-nav">
+
+						 	<li>
+
+								<img src="https://zupimages.net/up/19/50/f9c2.png" width="70" height="70" class="d-inline-block align-top" alt="%@error#&">
+
+						 	</li>
+
+						  <li>
+
+							<a href="http://127.0.0.1:5000/home">Home</a>
+
+						  </li>
+
+						  <li>
+
+							<a href="http://127.0.0.1:5000/">Login</a>
+
+						  </li>
+
+						  <li>
+
+							<a href="http://127.0.0.1:5000/profil/{{ current_user.user_id }}">Profil</a>
+
+						  </li>
+
+						  <li>
+
+							<a href="#">Donation</a>
+
+						  </li>
+
+					 </ul>
+
+				</div>
+
+			</div>
+
+		</nav>
+
+	<header>
+
+					<h2>Welcome To</h2>
+
+					<h1>MEDICAL ADVICES & DIAGNOSIS</h1>
+
+	</header>
+
+<!------------------------- MAIN CONTENT ------------------------>
+
+	<h3>Please Complete the Register Form to Create your Health Profil</h3>
+
+	<div class="containerillf">
+
+		<form method='POST'>
+			{{ form.hidden_tag() }}
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					{{ form.first_name.label() }}
+					{{ form.first_name(class="form-control", placeholder="First name") }}
+				</div>
+				<div class="form-group col-md-6">
+					{{ form.last_name.label() }}
+					{{ form.last_name(class="form-control", placeholder="Last name") }}
+				</div>
+				<div class="form-group col-md-6">
+					{{ form.birth_date.label() }}
+					{{ form.birth_date(class="form-control", placeholder="23/04/1995") }}
+				</div>
+				<div class="form-group col-md-6"><br><br><br></div>
+			</div>
+			<div class="form-group">
+				{{ form.email.label() }}
+				{{ form.email(class="form-control", placeholder="pseudo@mail.fr/com/co.il") }}
+				<br>
+				{{ form.password.label() }}
+				{{ form.password(class="form-control", placeholder="Password") }}
+				<br>
+				{{ form.password_confirm.label() }}
+				{{ form.password_confirm(class="form-control", placeholder="Password Confirmation") }}
+			</div>
+			<div class="form-group">
+				{{ form.profession.label() }}
+				{{ form.profession(class="form-control", placeholder="Profession") }}
+				<br>
+				{{ form.phone.label() }}
+				{{ form.phone(class="form-control", placeholder="type 00 for + ! like this 00972520304050") }}
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-8">
+					{{ form.address.label() }}
+					{{ form.address(class="form-control", placeholder="124 ExampleName Street/Boulevard/Avenue, ZipCode") }}
+				</div>
+			</div>
+			<div class="form-group col-md-2">
+				{{ form.city.label() }}
+				{{ form.city(class="form-control", placeholder="City") }}
+			</div>
+			<div class="form-group col-md-2">
+				{{ form.country.label() }}
+				{{ form.country(class="form-control", placeholder="Country") }}
+			</div>
+				<div class="form-row">
+					<div class="form-group col-md-3">
+						 {{ form.height.label() }}
+					 	 {{ form.height(class="form-control", placeholder="1.60") }}
+					</div>
+					<div class="form-group col-md-3">
+						 {{ form.weight.label() }}
+						 {{ form.weight(class="form-control", placeholder="70.5") }}
+					</div>
+					<div class="form-group col-md-3">
+						 {{ form.blood_group.label() }}
+						 {{ form.blood_group(class="form-control", placeholder="O+") }}
+					</div>
+					<div class="form-group col-md-3"><br><br><br></div>
+				</div>
+				<div class="form-group">
+					 {{ form.allergies.label() }}
+					 {{ form.allergies(class="form-control", placeholder="strawberries, gluten, lactose...") }}
+					 <br>
+					 {{ form.medicines.label() }}
+					 {{ form.medicines(class="form-control", placeholder="Paracetamol, Prednisolone...") }}
+					 <br>
+					 {{ form.medical_background.label() }}
+					 {{ form.medical_background(class="form-control", placeholder="Vaccines, Operations...") }}
+				</div>
+		  	{{ form.submit() }}
+		</form>
+
+	</div>
+
+​
+
+<!------------------------- FOOTER ------------------------>
+
+	<div class="footer" style="background-color: black; color:white; bottom:0; display: table;">
+
+	        <p style="vertical-align: middle; display: table-cell;">Copyright &copy;2019-2020. <b>©AJFB Development</b>. All rights reserved©</p>
+
+	</div>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

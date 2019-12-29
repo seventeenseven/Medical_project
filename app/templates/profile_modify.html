@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>MAD</title>
+
+  <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static', filename='simple-sidebar.css')}}" rel="stylesheet">
+
+  <style>
+        .trash { color:rgb(209, 91, 71); }
+        .flag { color:rgb(248, 148, 6); }
+        .panel-body { padding:0px; }
+        .panel-footer .pagination { margin: 0; }
+        .panel .glyphicon,.list-group-item .glyphicon { margin-right:5px; }
+        .panel-body .radio, .checkbox { display:inline-block;margin:0px; }
+        .panel-body input[type=checkbox]:checked + label { text-decoration: line-through;color: rgb(128, 144, 160); }
+        .list-group-item:hover, a.list-group-item:focus {text-decoration: none;background-color: rgb(245, 245, 245);}
+        .list-group { margin-bottom:0px; }
+    </style>
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Profile Page </div>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light">About MAD</a>
+        <a href="/profil/{{ user.user_id }}" class="list-group-item list-group-item-action bg-light">Patient Profile</a>
+        <a href="/profil/{{ user.user_id }}/request" class="list-group-item list-group-item-action bg-light">Patient Requests</a>
+        <a href="/profil/{{ user.user_id }}/modif" class="list-group-item list-group-item-action bg-light">Modify Profile</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Hide Nav</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="/profil/{{ user.user_id }}">{{ user.first_name }}'s Profile <span class="sr-only">(current)</span></a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="containerillf">
+		  {% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+			<ul class=flashes>
+				{% for category, message in messages %}
+				<li class="alert alert-{{ category }}">{{ message }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+		{% endwith %}
+        <h2>Fill only the input you want to modify</h2>
+		<form method='POST'>
+			{{ form.hidden_tag() }}
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					{{ form.first_name.label() }}
+					{{ form.first_name(class="form-control", placeholder="First name") }}
+				</div>
+				<div class="form-group col-md-6">
+					{{ form.last_name.label() }}
+					{{ form.last_name(class="form-control", placeholder="Last name") }}
+				</div>
+			</div>
+			<div class="form-group">
+				{{ form.email.label() }}
+				{{ form.email(class="form-control", placeholder="pseudo@mail.fr/com/co.il") }}
+				<br>
+				{{ form.password.label() }}
+				{{ form.password(class="form-control", placeholder="Password") }}
+			</div>
+			<div class="form-group">
+				{{ form.profession.label() }}
+				{{ form.profession(class="form-control", placeholder="Profession") }}
+				<br>
+				{{ form.phone.label() }}
+				{{ form.phone(class="form-control", placeholder="like this +972520304050") }}
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-8">
+					{{ form.address.label() }}
+					{{ form.address(class="form-control", placeholder="124 ExampleName Street/Boulevard/Avenue, ZipCode") }}
+				</div>
+			</div>
+			<div class="form-group col-md-2">
+				{{ form.city.label() }}
+				{{ form.city(class="form-control", placeholder="City") }}
+			</div>
+			<div class="form-group col-md-2">
+				{{ form.country.label() }}
+			{{ form.country(class="form-control", placeholder="Country") }}
+			</div>
+			<div class="form-row">
+<!--				<div class="form-group col-md-3">-->
+<!--					{{ form.height.label() }}-->
+<!--					{{ form.height(class="form-control", placeholder="1.60") }}-->
+<!--				</div>-->
+<!--				<div class="form-group col-md-3">-->
+<!--					{{ form.weight.label() }}-->
+<!--					{{ form.weight(class="form-control", placeholder="70.5") }}-->
+<!--				</div>-->
+				<div class="form-group col-md-3">
+						 {{ form.height.label() }}
+					 	 {{ form.height(class="form-control", placeholder="1.60") }}
+					</div>
+				<div class="form-group col-md-3">
+						 {{ form.weight.label() }}
+						 {{ form.weight(class="form-control", placeholder="70.5") }}
+					</div>
+				<div class="form-group col-md-3">
+						 {{ form.blood_group.label() }}
+						 {{ form.blood_group(class="form-control", placeholder="O+") }}
+					</div>
+			</div>
+				<div class="form-group">
+					 {{ form.allergies.label() }}
+					 {{ form.allergies(class="form-control", placeholder="strawberries, gluten, lactose...") }}
+					 <br>
+					 {{ form.medicines.label() }}
+					 {{ form.medicines(class="form-control", placeholder="Paracetamol, Prednisolone...") }}
+					 <br>
+					 {{ form.medical_background.label() }}
+					 {{ form.medical_background(class="form-control", placeholder="Vaccines, Operations...") }}
+				</div>
+			{{ form.submit() }}
+		</form>
+
+	</div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+    <!------------------------- FOOTER ------------------------>
+
+	<div class="footer" style="background-color: black; color:white; bottom:0; display: flex; width:100%">
+
+	        <p style="vertical-align: middle; display: table-cell;">Copyright &copy;2019-2020. <b>©AJFB Development</b>. All rights reserved©</p>
+
+	</div>
+</body>
+
+</html>

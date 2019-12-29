@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+	<link rel="shortcut icon" href="https://zupimages.net/up/19/50/f9c2.png">
+  <meta name="author" content="">
+
+  <title>MAD</title>
+
+  <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static', filename='simple-sidebar.css')}}" rel="stylesheet">
+
+  <style>
+        .trash { color:rgb(209, 91, 71); }
+        .flag { color:rgb(248, 148, 6); }
+        .panel-body { padding:0px; }
+        .panel-footer .pagination { margin: 0; }
+        .panel .glyphicon,.list-group-item .glyphicon { margin-right:5px; }
+        .panel-body .radio, .checkbox { display:inline-block;margin:0px; }
+        .panel-body input[type=checkbox]:checked + label { text-decoration: line-through;color: rgb(128, 144, 160); }
+        .list-group-item:hover, a.list-group-item:focus {text-decoration: none;background-color: rgb(245, 245, 245);}
+        .list-group { margin-bottom:0px; }
+
+    </style>
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Profile Page </div>
+      <div class="list-group list-group-flush">
+        <a href="/home" class="list-group-item list-group-item-action bg-light">About MAD</a>
+        <a href="/profil/{{ user.user_id }}" class="list-group-item list-group-item-action bg-light">Patient Profile</a>
+        <a href="/profil/{{ user.user_id }}/request" class="list-group-item list-group-item-action bg-light">Patient Requests</a>
+        <a href="/profil/{{ user.user_id }}/modif" class="list-group-item list-group-item-action bg-light">Modify Profile</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Hide Nav</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="/profil/{{ user.user_id }}">{{ user.first_name }}'s Profile <span class="sr-only">(current)</span></a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+					​		{% with messages = get_flashed_messages(with_categories=true) %}
+								{% if messages %}
+								<ul class="flashes">
+									{% for category, message in messages %}
+									<li class="alert alert-{{ category }}">{{ message }}</li>
+									{% endfor %}
+								</ul>
+								{% endif %}
+							{% endwith %}
+	  <div class="container">
+	  <div class="row">
+		  <div class="col-md-10">
+      		<table class="table">
+
+			  <thead>
+
+				<tr class="active" style="background-color:azur;">
+
+				  <th>Categories</th>
+
+				  <th>User Infos</th>
+
+				</tr>
+
+			  </thead>
+
+			  <tbody>
+
+				<tr>
+
+				  <th>First Name</th>
+
+				  <td>{{ user.first_name }}</td>
+
+				</tr>
+
+				<tr>
+
+				  <th>Last Name</th>
+
+				  <td>{{ user.last_name }}</td>
+
+				</tr>
+
+				<tr>
+
+				  <th>Birthdate</th>
+
+				  <td>{{ user.birth_date }}</td>
+
+				</tr>
+
+				<tr>
+
+				  <th>Email</th>
+
+				  <td>{{ user.mail }}</td>
+
+				</tr>
+
+				<tr class="warning">
+
+				  <th>Password</th>
+
+				  <td>{{ user.password }}</td>
+
+				</tr>
+
+				<tr>
+
+				  <th>Profession</th>
+
+				  <td>{{ user.profession }}</td>
+
+				</tr>
+
+				<tr>
+
+				  <th>Phone Number</th>
+
+				  <td>{{ user.phone }}</td>
+
+				</tr>
+
+				<tr>
+
+				  <th>Address</th>
+
+				  <td>{{ addressed.address }}</td>
+
+				</tr>
+
+				<tr>
+
+				  <th>City</th>
+
+				  <td>{{ addressed.city }}</td>
+
+				</tr>
+
+				<tr>
+
+				  <th>Country</th>
+
+				  <td>{{ addressed.country }}</td>
+
+				</tr>
+
+				<tr>
+
+				  <th>Height</th>
+
+				  <td>{{ user.height }}</td>
+
+				</tr>
+
+				<tr>
+
+				  <th>Weight</th>
+
+				  <td>{{ user.weight }}</td>
+
+				</tr>
+
+				<tr>
+
+				  <th>Blood Group</th>
+
+				  <td>{{ user.blood_group }}</td>
+
+				</tr>
+
+				<tr>
+
+				  <th>Allergies</th>
+
+				  <td>{{ user.allergies }}</td>
+
+				</tr>
+
+				<tr>
+
+				  <th>Current Medicines</th>
+
+				  <td>{{ user.medicines }}</td>
+
+				</tr>
+
+				<tr class="danger">
+
+				  <th>Medical Background</th>
+
+				  <td>{{ user.medical_background }}</td>
+
+				</tr>
+
+			  </tbody>
+
+			  <tfoot>
+
+				<tr>
+
+				  <th>Hobbies</th>
+
+				  <td>Unspecified</td>
+
+				</tr>
+
+			  </tfoot>
+
+			</table>
+		  </div>
+	  </div>
+	  </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+    <!------------------------- FOOTER ------------------------>
+
+	<div class="footer" style="background-color: black; color:white; bottom:0; display: flex; width:100%">
+
+	        <p style="vertical-align: middle; display: table-cell;">Copyright &copy;2019-2020. <b>©AJFB Development</b>. All rights reserved©</p>
+
+	</div>
+</body>
+
+</html>
